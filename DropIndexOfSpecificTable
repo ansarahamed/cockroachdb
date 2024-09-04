@@ -1,0 +1,10 @@
+To drop index of a specific table.
+
+Note: We could add same name index to different table
+
+Hence you cannot do
+DROP INDEX <INDEX_NAME>
+
+
+You should instead do
+DROP INDEX <TABLE_NAME>@<INDEX_NAME>
