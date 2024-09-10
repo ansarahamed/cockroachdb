@@ -1,0 +1,20 @@
+When you add a new field, indexes for the new fields also creates automatically
+
+
+//Added a new column, see the indices for the new column
+root@localhost:26257/abcd> alter table user_data add email text;                                                                                                                                         
+ALTER TABLE
+
+Time: 147ms total (execution 146ms / network 1ms)
+
+root@localhost:26257/abcd> show columns from user_data;                                                                                                                                                  
+  column_name | data_type | is_nullable | column_default | generation_expression |     indices      | is_hidden
+--------------+-----------+-------------+----------------+-----------------------+------------------+------------
+  id          | INT8      |      f      | NULL           |                       | {user_data_pkey} |     f
+  name        | STRING    |      t      | NULL           |                       | {user_data_pkey} |     f
+  attributes  | JSONB     |      t      | NULL           |                       | {user_data_pkey} |     f
+  created_at  | TIMESTAMP |      t      | now()          |                       | {user_data_pkey} |     f
+  email       | STRING    |      t      | NULL           |                       | {user_data_pkey} |     f
+(5 rows)
+
+Time: 107ms total (execution 107ms / network 1ms)
