@@ -1,0 +1,24 @@
+When you tried to create a table with PRIMARY KEY, it automatically creates indexes _pkey on all the fields of the table
+
+
+root@localhost:26257/abcd> CREATE TABLE user_data (                                                                                                                                                      
+                        ->     id INT PRIMARY KEY,                                                                                                                                                       
+                        ->     name STRING,                                                                                                                                                              
+                        ->     attributes JSONB,  -- JSONB column to store flexible, schema-less data                                                                                                    
+                        ->     created_at TIMESTAMP DEFAULT now()                                                                                                                                        
+                        -> );                                                                                                                                                                            
+                        ->                                                                                                                                                                               
+CREATE TABLE
+
+Time: 18ms total (execution 18ms / network 0ms)
+
+root@localhost:26257/abcd> show columns from user_data;                                                                                                                                                  
+  column_name | data_type | is_nullable | column_default | generation_expression |     indices      | is_hidden
+--------------+-----------+-------------+----------------+-----------------------+------------------+------------
+  id          | INT8      |      f      | NULL           |                       | {user_data_pkey} |     f
+  name        | STRING    |      t      | NULL           |                       | {user_data_pkey} |     f
+  attributes  | JSONB     |      t      | NULL           |                       | {user_data_pkey} |     f
+  created_at  | TIMESTAMP |      t      | now()          |                       | {user_data_pkey} |     f
+(4 rows)
+
+Time: 100ms total (execution 100ms / network 1ms)
