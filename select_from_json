@@ -1,0 +1,18 @@
+operator ->> returns text
+
+The SELECT data->>'source' FROM tablename; query extracts the value associated with the source key from a JSON column named data in a PostgreSQL table. For each row, it returns the value of the source field.
+
+For example, if the data column contains JSON objects like:
+
+json
+Copy code
+{"source": "website", "type": "referral", "skus": [{}]}
+{"source": "social_media", "type": "organic"}
+{"source": "email", "type": "campaign"}
+The query will return the values "website", "social_media", and "email" for the source field in respective rows. This is useful when you need to extract and display a specific key's value from JSON data in your table.
+
+
+
+
+
+
